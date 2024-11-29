@@ -27,5 +27,5 @@ function onSubmit(values: Record<string, any>) {
     >
 
     <Button type="submit">Submit</Button>
-</AutoForm>
+    </AutoForm>
 </template>
