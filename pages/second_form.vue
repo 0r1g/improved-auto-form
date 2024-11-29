@@ -24,6 +24,12 @@ function onSubmit(values: Record<string, any>) {
         class="w-2/3 space-y-6"
         :schema="schema"
         @submit="onSubmit"
+        :field-config="{
+            password: {
+                label: 'Your secure password',
+                inputProps: {
+                type: 'password',
+                },},}"
     >
 
     <Button type="submit">Submit</Button>
