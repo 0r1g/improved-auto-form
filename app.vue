@@ -41,7 +41,7 @@ const form = useForm({
 })
 
 const onSubmit = form.handleSubmit((values) => {
-  console.log(values)
+  alert(Object.entries(values).join('\n'))
 })
 </script>
 
