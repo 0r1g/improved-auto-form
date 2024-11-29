@@ -32,7 +32,7 @@ const formSchema = toTypedSchema(z.object({
   username: z.string().min(2).max(50),
   email: z.string().email().min(2).max(50),
   password: z.string().min(6).max(50),
-  acceptEmails: z.boolean(),
+  acceptEmails: z.boolean().default(false),
 }));
 
 
