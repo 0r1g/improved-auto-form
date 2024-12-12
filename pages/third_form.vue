@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AutoForm } from '@/components/ui/auto-form'
+import { AutoForm } from '@/components/ui/improved-auto-form'
 import { Button } from '@/components/ui/button'
 import * as z from 'zod'
 
