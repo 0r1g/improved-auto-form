@@ -27,6 +27,9 @@ function onSubmit(values: Record<string, any>) {
         :schema="schema"
         @submit="onSubmit"
         :field-config="{
+            pronounce: {
+                component: 'radio'
+            },
             password: {
                 label: 'Your secure password',
                 inputProps: {

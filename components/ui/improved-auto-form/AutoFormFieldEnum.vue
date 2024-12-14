@@ -3,32 +3,31 @@ import type { FieldProps } from './interface'
 import AutoFormFieldEnumRadioGroup from './AutoFormFieldEnumRadioGroup.vue'
 import AutoFormFieldEnumSelect from './AutoFormFieldEnumSelect.vue'
 
-defineProps<FieldProps & {
+const props = defineProps<FieldProps & {
   options?: string[]
   componentField: any
   fieldName: string[]
+  config?: any
 }>()
+
+
+// const componentName = props.config?.component || (props.config?.component === 'radio' ? AutoFormFieldEnumRadioGroup : AutoFormFieldEnumSelect)
+// const componentName = props.config?.component === 'radio' ? AutoFormFieldEnumRadioGroup : props.config?.component || AutoFormFieldEnumSelect
+
+const componentName = computed(() => {
+  if (props.config?.component && props.config?.component !== 'radio' && props.config?.component !== 'select') {
+    return props.config?.component
+  } else if (props.config?.component === 'radio') {
+    return AutoFormFieldEnumRadioGroup
+  } else {
+    return AutoFormFieldEnumSelect
+  }
+})
 </script>
 
 <template>
-  <AutoFormFieldEnumRadioGroup
-    v-if="config?.component === 'radio'"
-    :options="options"
-    :componentField="componentField"
-    :disabled="disabled"
-    :fieldName="fieldName"
-  />
   <component
-    v-else-if="
-    config?.component !== undefined && 
-    config?.component !== 'select'"
-    :is="config?.component"
-  />
-  <AutoFormFieldEnumSelect
-    v-else
-    :options="options"
-    :componentField="componentField"
-    :disabled="disabled"
-    :fieldName="fieldName"
+    :is="componentName"
+    v-bind="{ options, componentField, disabled, fieldName }"
   />
 </template>
