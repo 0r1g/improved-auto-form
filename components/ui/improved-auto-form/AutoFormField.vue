@@ -46,6 +46,7 @@ const { isDisabled, isHidden, isRequired, overrideOptions } = useDependencies(pr
           :options="overrideOptions || shape.options"
           :disabled="isDisabled"
           :config="config"
+          :fieldName="fieldName"
           v-bind="slotProps"
         >
           <slot v-bind="slotProps" />
